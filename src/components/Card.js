@@ -2,7 +2,7 @@ import React from 'react'
 import * as images from '../player-images/imports'
 const Card = ({players,key}) => {
   return (
-    <div className="card" style={{width:"18rem"}} key={key}>
+    <div className="card m-2" style={{width:"18rem"}} key={key}>
      <img className="card-img-top"
      src={images[`img_`+players.Id]}
      alt="Player"/>

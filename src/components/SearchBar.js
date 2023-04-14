@@ -10,7 +10,7 @@ const SearchBar = ({ posts, setSearchResults }) => {
     }
 
     return (
-        <header>
+        <header style={{display:"flex",justifyContent:"flex-end"}}>
             <form className="search" onSubmit={handleSubmit}>
                 <input
                     className="search__input"
