@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import SearchBar from './components/SearchBar'
+import ListPage from './pages/ListPage'
+import { PLAYERS_API } from './utils/constant'
 
-function App() {
+const App = () => {
+  const [players, setPlayers] = useState([])
+const [searchResults, setSearchResults] = useState([])
+useEffect(() => {
+  fetchPlayers()
+}, []) 
+ const fetchPlayers = async () =>{
+   const data = await fetch(PLAYERS_API);
+   const json = await data.json();
+   setPlayers(json.playerList)
+   setSearchResults(json.playerList)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  <>
+    <SearchBar posts={players} setSearchResults={setSearchResults} />
+    <ListPage searchResults={searchResults} />
+  </>
+  )
+} 
 
-export default App;
+export default App
