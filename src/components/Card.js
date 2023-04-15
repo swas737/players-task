@@ -14,11 +14,11 @@ const Card = ({players,key}) => {
        <p className="card-text"><b>$</b>{players.Value}</p>
        <p className="card-text"><b>UpComingMatchesList:</b> {players.UpComingMatchesList[0].CCode} vs {players.UpComingMatchesList[0].VsCCode}</p>
        <p className="card-text"><b>Next Match: </b>
-      {moment(players.UpComingMatchesList[0].MDate).format()}</p>
+      {moment().tz('Etc/UTC').format(players.UpComingMatchesList[0].MDate)}
+      </p>
        </div>
        </div>
        )
       }
       
-      // {players.UpComingMatchesList[0].MDate}
       export default Card
